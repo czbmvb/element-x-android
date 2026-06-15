@@ -15,8 +15,11 @@ object BuildTimeConfig {
     const val GOOGLE_APP_ID_DEBUG = "1:912726360885:android:def0a4e454042e9b00427c"
     const val GOOGLE_APP_ID_NIGHTLY = "1:912726360885:android:e17435e0beb0303000427c"
 
-    val METADATA_HOST_REVERSED: String? = null
-    val URL_WEBSITE: String? = "https://www.gspcoms.net"
+    // DNS-inverso del host de URL_WEBSITE: define el scheme del redirect OAuth (net.gspcoms:/).
+    // MAS exige que el scheme = DNS-inverso del client_uri (gspcoms.net), si no rechaza el registro.
+    val METADATA_HOST_REVERSED: String? = "net.gspcoms"
+    // Mismo host (apex gspcoms.net) que las demás URLs y que el scheme net.gspcoms.
+    val URL_WEBSITE: String? = "https://gspcoms.net"
     val URL_LOGO: String? = null
     val URL_COPYRIGHT: String? = "https://gspcoms.net"
     val URL_ACCEPTABLE_USE: String? = "https://gspcoms.net"
