@@ -24,8 +24,12 @@ class DefaultEnterpriseService : EnterpriseService {
 
     override suspend fun isEnterpriseUser(sessionId: SessionId) = false
     override suspend fun tweakMasUrl(url: String, homeserver: String) = url
-    override fun defaultHomeserverList(): List<String> = emptyList()
-    override suspend fun isAllowedToConnectToHomeserver(homeserverUrl: String) = true
+    // GSPCOMS: servidor horneado. Lista de un solo elemento => fuerza el proveedor y
+    // oculta la selección de servidor en onboarding (plug-and-play).
+    override fun defaultHomeserverList(): List<String> = listOf("https://matrix.gspcoms.net")
+    // Solo se permite conectar a nuestro dominio (bloquea deep-links a otros servidores).
+    override suspend fun isAllowedToConnectToHomeserver(homeserverUrl: String) =
+        homeserverUrl.contains("gspcoms.net", ignoreCase = true)
 
     override suspend fun overrideBrandColor(sessionId: SessionId?, brandColor: String?) = Unit
 

@@ -33,10 +33,8 @@ object ModulesConfig {
             AnalyticsConfig.Disabled
         }
     } else {
-        println("Analytics enabled with Posthog and Sentry")
-        AnalyticsConfig.Enabled(
-            withPosthog = true,
-            withSentry = true,
-        )
+        // GSPCOMS: sin analytics. PostHog/Sentry de Element NO se incluyen en el APK.
+        println("Analytics disabled (GSPCOMS)")
+        AnalyticsConfig.Disabled
     }
 }
