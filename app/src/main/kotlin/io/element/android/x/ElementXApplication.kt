@@ -9,6 +9,9 @@
 package io.element.android.x
 
 import android.app.Application
+import android.app.LocaleManager
+import android.os.Build
+import android.os.LocaleList
 import androidx.compose.material3.ComposeMaterial3Flags.isAnchoredDraggableComponentsStrictOffsetCheckEnabled
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.startup.AppInitializer
@@ -32,6 +35,16 @@ class ElementXApplication : Application(), DependencyInjectionGraphOwner, Config
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate() {
         super.onCreate()
+
+        // GSPCOMS: español por defecto. Solo en el primer arranque (si el usuario no ha
+        // elegido idioma), para no pisar una selección manual posterior. Android 13+.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val localeManager = getSystemService(LocaleManager::class.java)
+            if (localeManager != null && localeManager.applicationLocales.isEmpty) {
+                localeManager.applicationLocales = LocaleList.forLanguageTags("es")
+            }
+        }
+
         AppInitializer.getInstance(this).apply {
             initializeComponent(CrashInitializer::class.java)
             initializeComponent(PlatformInitializer::class.java)
