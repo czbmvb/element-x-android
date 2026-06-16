@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195085396171",
+    "project_id": "gspcoms-chat",
+    "storage_bucket": "gspcoms-chat.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195085396171:android:f2c4983e3c512329d6534e",
+        "android_client_info": {
+          "package_name": "net.gspcoms.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRLmf5UKfgUVf3HMaHSEgC2kCLAUwAhuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,7 @@ package config
 object BuildTimeConfig {
     const val APPLICATION_ID = "net.gspcoms.chat"
     const val APPLICATION_NAME = "GSPCOMS Chat"
-    const val GOOGLE_APP_ID_RELEASE = "1:912726360885:android:d097de99a4c23d2700427c"
+    const val GOOGLE_APP_ID_RELEASE = "1:195085396171:android:f2c4983e3c512329d6534e"
     const val GOOGLE_APP_ID_DEBUG = "1:912726360885:android:def0a4e454042e9b00427c"
     const val GOOGLE_APP_ID_NIGHTLY = "1:912726360885:android:e17435e0beb0303000427c"
 

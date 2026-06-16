@@ -33,8 +33,8 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.licensee)
     alias(libs.plugins.kotlin.serialization)
-    // To be able to update the firebase.xml files, uncomment and build the project
-    // alias(libs.plugins.gms.google.services)
+    // GSPCOMS: procesa google-services.json para Firebase (push, variante gplay).
+    alias(libs.plugins.gms.google.services)
 }
 
 android {
