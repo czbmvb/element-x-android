@@ -1,8 +1,9 @@
 name: GSPCOMS Chat APK
 
 # Build manual del APK de GSPCOMS Chat (fork de Element X).
-# Flavor fdroid (sin Google/Firebase) + buildType release (firmado con keystore debug del repo,
-# instalable por sideload). Sin analytics/maps (config FOSS de GSPCOMS).
+# Flavor gplay + buildType release, firmado con el KEYSTORE RELEASE propio de GSPCOMS
+# (secrets ANDROID_SIGNING_KEY/ANDROID_ALIAS/ANDROID_KEY_STORE_PASSWORD/ANDROID_KEY_PASSWORD).
+# Instalable por sideload. En local (sin esos env) el release cae a debug.
 
 on:
   workflow_dispatch:
@@ -44,7 +45,17 @@ jobs:
       - name: Configure gradle
         uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
-      - name: Assemble gplay release APK
+      - name: Decode release keystore
+        env:
+          ANDROID_SIGNING_KEY: ${{ secrets.ANDROID_SIGNING_KEY }}
+        run: echo "$ANDROID_SIGNING_KEY" | base64 -d > "$RUNNER_TEMP/gspcoms-release.keystore"
+
+      - name: Assemble gplay release APK (firmado release)
+        env:
+          GSPCOMS_KEYSTORE_FILE: ${{ runner.temp }}/gspcoms-release.keystore
+          GSPCOMS_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
+          GSPCOMS_KEY_ALIAS: ${{ secrets.ANDROID_ALIAS }}
+          GSPCOMS_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew :app:assembleGplayRelease $CI_GRADLE_ARG_PROPERTIES
 
       - name: Upload APK

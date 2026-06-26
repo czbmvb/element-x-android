@@ -86,6 +86,17 @@ android {
             storeFile = file("./signature/debug.keystore")
             storePassword = "android"
         }
+        register("gspcoms") {
+            // Firma RELEASE propia de GSPCOMS. En CI llega por env (decodificada de secrets);
+            // en local sin esas env, el release cae a debug (ver buildTypes.release).
+            val gspKs = System.getenv("GSPCOMS_KEYSTORE_FILE")
+            if (gspKs != null) {
+                storeFile = file(gspKs)
+                storePassword = System.getenv("GSPCOMS_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("GSPCOMS_KEY_ALIAS")
+                keyPassword = System.getenv("GSPCOMS_KEY_PASSWORD")
+            }
+        }
         register("nightly") {
             keyAlias = System.getenv("ELEMENT_ANDROID_NIGHTLY_KEYID")
                 ?: project.property("signing.element.nightly.keyId") as? String?
@@ -121,7 +132,7 @@ android {
                 "login_redirect_scheme",
                 oAuthRedirectSchemeBase,
             )
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = if (System.getenv("GSPCOMS_KEYSTORE_FILE") != null) signingConfigs.getByName("gspcoms") else signingConfigs.getByName("debug")
 
             optimization {
                 enable = true
