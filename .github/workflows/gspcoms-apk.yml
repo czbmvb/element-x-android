@@ -1,7 +1,8 @@
 name: GSPCOMS Chat APK
 
 # Build manual del APK de GSPCOMS Chat (fork de Element X).
-# Flavor gplay + buildType release, firmado con el KEYSTORE RELEASE propio de GSPCOMS
+# Flavor fdroid (UnifiedPush/ntfy, SIN Google/FCM) + buildType release, firmado con el
+# KEYSTORE RELEASE propio de GSPCOMS
 # (secrets ANDROID_SIGNING_KEY/ANDROID_ALIAS/ANDROID_KEY_STORE_PASSWORD/ANDROID_KEY_PASSWORD).
 # Instalable por sideload. En local (sin esos env) el release cae a debug.
 
@@ -50,17 +51,17 @@ jobs:
           ANDROID_SIGNING_KEY: ${{ secrets.ANDROID_SIGNING_KEY }}
         run: echo "$ANDROID_SIGNING_KEY" | base64 -d > "$RUNNER_TEMP/gspcoms-release.keystore"
 
-      - name: Assemble gplay release APK (firmado release)
+      - name: Assemble fdroid release APK (firmado release)
         env:
           GSPCOMS_KEYSTORE_FILE: ${{ runner.temp }}/gspcoms-release.keystore
           GSPCOMS_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
           GSPCOMS_KEY_ALIAS: ${{ secrets.ANDROID_ALIAS }}
           GSPCOMS_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: ./gradlew :app:assembleGplayRelease $CI_GRADLE_ARG_PROPERTIES
+        run: ./gradlew :app:assembleFdroidRelease $CI_GRADLE_ARG_PROPERTIES
 
       - name: Upload APK
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: gspcoms-chat-apk
-          path: app/build/outputs/apk/gplay/release/*.apk
+          path: app/build/outputs/apk/fdroid/release/*.apk
           if-no-files-found: error

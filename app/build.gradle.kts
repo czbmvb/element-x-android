@@ -33,8 +33,9 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.licensee)
     alias(libs.plugins.kotlin.serialization)
-    // GSPCOMS: procesa google-services.json para Firebase (push, variante gplay).
-    alias(libs.plugins.gms.google.services)
+    // GSPCOMS: distribución en variante fdroid (UnifiedPush/ntfy, sin Google).
+    // El plugin gms.google-services (Firebase/FCM) se quitó junto con google-services.json;
+    // re-añadir ambos solo si se retoma la variante gplay para Play Store.
 }
 
 android {
