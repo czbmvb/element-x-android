@@ -20,7 +20,8 @@ object BuildTimeConfig {
     val METADATA_HOST_REVERSED: String? = "net.gspcoms"
     // Mismo host (apex gspcoms.net) que las demás URLs y que el scheme net.gspcoms.
     val URL_WEBSITE: String? = "https://gspcoms.net"
-    val URL_LOGO: String? = null
+    // Logo del cliente OIDC (lo muestra MAS en la pantalla de login). Misma URL que iOS y que el branding de MAS.
+    val URL_LOGO: String? = "https://www.gspcoms.net/gspcoms-logo.svg"
     val URL_COPYRIGHT: String? = "https://gspcoms.net"
     val URL_ACCEPTABLE_USE: String? = "https://gspcoms.net"
     val URL_PRIVACY: String? = "https://gspcoms.net"
