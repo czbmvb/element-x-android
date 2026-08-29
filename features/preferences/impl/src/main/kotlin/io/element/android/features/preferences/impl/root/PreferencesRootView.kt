@@ -55,6 +55,7 @@ fun PreferencesRootView(
     onOpenRageShake: () -> Unit,
     onOpenLockScreenSettings: () -> Unit,
     onOpenAbout: () -> Unit,
+    onOpenWhatsApp: () -> Unit = {},
     onOpenDeveloperSettings: () -> Unit,
     onOpenAdvancedSettings: () -> Unit,
     onOpenLabs: () -> Unit,
@@ -108,6 +109,7 @@ fun PreferencesRootView(
         GeneralSection(
             state = state,
             onOpenAbout = onOpenAbout,
+            onOpenWhatsApp = onOpenWhatsApp,
             onOpenAnalytics = onOpenAnalytics,
             onOpenRageShake = onOpenRageShake,
             onOpenAdvancedSettings = onOpenAdvancedSettings,
@@ -230,6 +232,7 @@ private fun ColumnScope.ManageAccountSection(
 private fun ColumnScope.GeneralSection(
     state: PreferencesRootState,
     onOpenAbout: () -> Unit,
+    onOpenWhatsApp: () -> Unit,
     onOpenAnalytics: () -> Unit,
     onOpenRageShake: () -> Unit,
     onOpenAdvancedSettings: () -> Unit,
@@ -250,6 +253,12 @@ private fun ColumnScope.GeneralSection(
             onClick = onOpenLabs,
         )
     }
+    // GSPCOMS: conectar WhatsApp (puente mautrix)
+    ListItem(
+        headlineContent = { Text(stringResource(id = R.string.screen_whatsapp_title)) },
+        leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Mobile())),
+        onClick = onOpenWhatsApp,
+    )
     ListItem(
         headlineContent = { Text(stringResource(id = CommonStrings.common_about)) },
         leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Info())),

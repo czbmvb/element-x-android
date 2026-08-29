@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GSPCOMS: textos en español de la pantalla "WhatsApp". -->
+<resources>
+    <string name="screen_whatsapp_title">WhatsApp</string>
+    <string name="screen_whatsapp_intro">Conecta tu WhatsApp para ver y responder tus chats de WhatsApp desde aquí.</string>
+    <string name="screen_whatsapp_none">Aún no has conectado ningún WhatsApp.</string>
+    <string name="screen_whatsapp_connect">Conectar WhatsApp</string>
+    <string name="screen_whatsapp_disconnect">Desconectar</string>
+    <string name="screen_whatsapp_state_connected">Conectado</string>
+    <string name="screen_whatsapp_state_disconnected">Desconectado</string>
+    <string name="screen_whatsapp_starting">Preparando la vinculación con WhatsApp…</string>
+    <string name="screen_whatsapp_same_phone_hint">¿WhatsApp está en este teléfono? Toca el botón y confirma dentro de WhatsApp.</string>
+    <string name="screen_whatsapp_open_whatsapp">Abrir WhatsApp y vincular</string>
+    <string name="screen_whatsapp_other_phone_hint">¿WhatsApp está en otro teléfono? Escanea este código desde WhatsApp → Dispositivos vinculados.</string>
+    <string name="screen_whatsapp_code_hint">En WhatsApp entra a Dispositivos vinculados → Vincular con número de teléfono y escribe este código:</string>
+    <string name="screen_whatsapp_waiting">Esperando a que WhatsApp confirme…</string>
+    <string name="screen_whatsapp_success">¡Listo! Tus chats de WhatsApp aparecerán en unos momentos.</string>
+    <string name="screen_whatsapp_done">Listo</string>
+    <string name="screen_whatsapp_cancel">Cancelar</string>
+    <string name="screen_whatsapp_retry">Reintentar</string>
+    <string name="screen_whatsapp_error">No se pudo conectar con el puente de WhatsApp: %1$s</string>
+</resources>

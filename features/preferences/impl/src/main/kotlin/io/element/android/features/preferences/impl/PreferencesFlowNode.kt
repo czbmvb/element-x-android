@@ -26,6 +26,7 @@ import io.element.android.features.lockscreen.api.LockScreenEntryPoint
 import io.element.android.features.logout.api.LogoutEntryPoint
 import io.element.android.features.preferences.api.PreferencesEntryPoint
 import io.element.android.features.preferences.impl.about.AboutNode
+import io.element.android.features.preferences.impl.whatsapp.WhatsAppNode
 import io.element.android.features.preferences.impl.advanced.AdvancedSettingsNode
 import io.element.android.features.preferences.impl.analytics.AnalyticsSettingsNode
 import io.element.android.features.preferences.impl.blockedusers.BlockedUsersNode
@@ -87,6 +88,9 @@ class PreferencesFlowNode(
         data object About : NavTarget
 
         @Parcelize
+        data object WhatsApp : NavTarget
+
+        @Parcelize
         data object NotificationSettings : NavTarget
 
         @Parcelize
@@ -141,6 +145,9 @@ class PreferencesFlowNode(
 
                     override fun navigateToAbout() {
                         backstack.push(NavTarget.About)
+                    }
+                    override fun navigateToWhatsApp() {
+                        backstack.push(NavTarget.WhatsApp)
                     }
 
                     override fun navigateToDeveloperSettings() {
@@ -219,6 +226,9 @@ class PreferencesFlowNode(
             }
             NavTarget.AnalyticsSettings -> {
                 createNode<AnalyticsSettingsNode>(buildContext)
+            }
+            NavTarget.WhatsApp -> {
+                createNode<WhatsAppNode>(buildContext)
             }
             NavTarget.NotificationSettings -> {
                 val notificationSettingsCallback = object : NotificationSettingsNode.Callback {

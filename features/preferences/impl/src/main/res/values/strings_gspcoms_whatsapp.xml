@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GSPCOMS: textos de la pantalla "WhatsApp" (puente mautrix). Fuera de Localazy a propósito. -->
+<resources>
+    <string name="screen_whatsapp_title">WhatsApp</string>
+    <string name="screen_whatsapp_intro">Connect your WhatsApp to see and reply to your WhatsApp chats from here.</string>
+    <string name="screen_whatsapp_none">You have not connected any WhatsApp yet.</string>
+    <string name="screen_whatsapp_connect">Connect WhatsApp</string>
+    <string name="screen_whatsapp_disconnect">Disconnect</string>
+    <string name="screen_whatsapp_state_connected">Connected</string>
+    <string name="screen_whatsapp_state_disconnected">Disconnected</string>
+    <string name="screen_whatsapp_starting">Preparing the link with WhatsApp…</string>
+    <string name="screen_whatsapp_same_phone_hint">Is WhatsApp on this phone? Tap the button and confirm inside WhatsApp.</string>
+    <string name="screen_whatsapp_open_whatsapp">Open WhatsApp and link</string>
+    <string name="screen_whatsapp_other_phone_hint">Is WhatsApp on another phone? Scan this code from WhatsApp → Linked devices.</string>
+    <string name="screen_whatsapp_code_hint">In WhatsApp go to Linked devices → Link with phone number and enter this code:</string>
+    <string name="screen_whatsapp_waiting">Waiting for WhatsApp to confirm…</string>
+    <string name="screen_whatsapp_success">Done! Your WhatsApp chats will appear in a few moments.</string>
+    <string name="screen_whatsapp_done">Done</string>
+    <string name="screen_whatsapp_cancel">Cancel</string>
+    <string name="screen_whatsapp_retry">Retry</string>
+    <string name="screen_whatsapp_error">Could not connect with the WhatsApp bridge: %1$s</string>
+</resources>
